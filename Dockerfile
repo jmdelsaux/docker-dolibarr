@@ -1,7 +1,7 @@
 FROM php:5.6.40-apache-jessie
 MAINTAINER JS Minet
 
-ENV VERSION 10.0.4
+ENV VERSION 10.0.4-o2xp
 
 RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libldap2-dev libicu-dev \
     && rm -rf /var/lib/apt/lists/* \
@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libldap2-dev l
     && docker-php-ext-install mysqli \
     && apt-get purge -y libpng12-dev libjpeg-dev libldap2-dev \
 	&& cd /tmp \
-    && curl "https://codeload.github.com/Dolibarr/dolibarr/tar.gz/${VERSION}" -o dolibarr.tar.gz \
+    && curl "https://codeload.github.com/jmdelsaux/dolibarr/tar.gz/${VERSION}" -o dolibarr.tar.gz \
     && tar -xzf dolibarr.tar.gz \
     && cp -R dolibarr-$VERSION/htdocs/. /var/www/html \
     && rm -R dolibarr-$VERSION \
